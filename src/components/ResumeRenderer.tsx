@@ -1,21 +1,14 @@
 "use client";
 
 import { Document, Page, pdf, Text } from "@react-pdf/renderer";
-import {
-  Document as DocumentViewer,
-  Page as PageViewer,
-  pdfjs,
-} from "react-pdf";
+import { Document as DocumentViewer, Page as PageViewer, pdfjs } from "react-pdf";
 import { JSX, memo, useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
 
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.mjs",
-  import.meta.url,
-).toString();
+pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/build/pdf.worker.min.mjs", import.meta.url).toString();
 
 export const PdfRenderer = memo(
   function PdfRenderer({ data }: { data: Record<string, unknown> }) {
@@ -43,9 +36,7 @@ export const PdfRenderer = memo(
     useEffect(() => {
       return () => {
         if (url) {
-          for (const iframe of document.querySelectorAll(
-            `iframe[src="${url}"]`,
-          )) {
+          for (const iframe of document.querySelectorAll(`iframe[src="${url}"]`)) {
             iframe.remove();
           }
           URL.revokeObjectURL(url);
@@ -74,9 +65,7 @@ export const PdfRenderer = memo(
           <Button
             variant={"outline"}
             onClick={() => {
-              const existing: HTMLIFrameElement | null = document.querySelector(
-                `iframe[src="${url}"]`,
-              );
+              const existing: HTMLIFrameElement | null = document.querySelector(`iframe[src="${url}"]`);
               if (existing) {
                 existing.contentWindow?.print();
                 return;
@@ -106,11 +95,7 @@ export const PdfRenderer = memo(
           </Button>
         </div>
         <div className="grow overflow-auto p-8" ref={containerRef}>
-          <DocumentViewer
-            className="mx-auto w-fit"
-            file={url}
-            scale={containerWidth / 612}
-          >
+          <DocumentViewer className="mx-auto w-fit" file={url} scale={containerWidth / 612}>
             <PageViewer pageIndex={0} />
           </DocumentViewer>
         </div>
