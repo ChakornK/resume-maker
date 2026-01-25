@@ -61,7 +61,7 @@ export const PdfRenderer = memo(
 
     return (
       <div className="flex h-full w-full flex-col items-stretch">
-        <div className="flex items-center justify-end border-b px-8 py-4">
+        <div className="flex items-center justify-end gap-2 border-b px-8 py-4">
           <Button
             variant={"outline"}
             onClick={() => {
