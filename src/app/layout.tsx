@@ -17,6 +17,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        <link href=" https://cdn.jsdelivr.net/npm/computer-modern/cmu-serif.min.css " rel="stylesheet" />
       </head>
       <body className="dark antialiased">{children}</body>
     </html>

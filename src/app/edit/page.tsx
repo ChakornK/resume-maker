@@ -1,42 +1,17 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
 import { DatePicker } from "@/components/ui/datepicker";
 import { Field, FieldDescription, FieldGroup, FieldLabel, FieldLegend, FieldSeparator, FieldSet } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import dynamic from "next/dynamic";
 import { Dispatch, Fragment, SetStateAction, useState } from "react";
+import { ResumeData } from "@/lib/types";
+import { useDebounce } from "@uidotdev/usehooks";
 
 const PdfRenderer = dynamic(() => import("@/components/ResumeRenderer").then((mod) => mod.PdfRenderer), {
   ssr: false,
 });
-
-type ResumeData = {
-  about: {
-    name: string;
-    email: string;
-    linkedin: string;
-    github: string;
-  };
-  experience: {
-    company: string;
-    title: string;
-    startDate: Date;
-    endDate: Date;
-    description: string;
-  }[];
-  education: {
-    institute: string;
-    degree: string;
-    startDate: Date;
-    endDate: Date;
-  }[];
-  skills: {
-    title: string;
-    content: string;
-  }[];
-};
 
 type FormTemplate = {
   title: string;
@@ -158,6 +133,7 @@ export default function Editor() {
     education: [],
     skills: [],
   });
+  const debouncedData = useDebounce(data, 300);
 
   return (
     <main className="h-dvh flex w-screen items-stretch divide-x overflow-hidden">
@@ -186,7 +162,7 @@ export default function Editor() {
         </div>
       </div>
       <div className="w-1/2">
-        <PdfRenderer data={data} />
+        <PdfRenderer data={debouncedData} />
       </div>
     </main>
   );
