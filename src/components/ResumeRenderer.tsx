@@ -12,7 +12,7 @@ import { ResumeDocument } from "./ResumeGenerator";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/build/pdf.worker.min.mjs", import.meta.url).toString();
 
-export const PdfRenderer = ({ data }: { data: ResumeData }) => {
+export default function PdfRenderer({ data }: { data: ResumeData }) {
   const [resumePdf, setResumePdf] = useState<JSX.Element | null>(null);
   const [url, setUrl] = useState("");
 
@@ -97,4 +97,4 @@ export const PdfRenderer = ({ data }: { data: ResumeData }) => {
       </div>
     </div>
   );
-};
+}

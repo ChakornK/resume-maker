@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { ResumeData } from "@/lib/types";
 
-const PdfRenderer = dynamic(() => import("@/components/ResumeRenderer").then((mod) => mod.PdfRenderer), {
+const PdfRenderer = dynamic(() => import("@/components/ResumeRenderer"), {
   ssr: false,
 });
 const EditorForm = dynamic(() => import("@/components/EditorForm"), {
