@@ -2,7 +2,7 @@
 
 import { ResumeData } from "@/lib/types";
 import { twj } from "@/lib/utils";
-import { Document, Font, Page, Text } from "@react-pdf/renderer";
+import { Document, Font, Link, Page, Text, View } from "@react-pdf/renderer";
 
 Font.register({
   family: "Computer Modern",
@@ -24,11 +24,28 @@ export const ResumeDocument = ({ data }: { data: ResumeData }) => {
       <Page
         size="LETTER"
         style={{
-          ...twj("p-4 text-sm"),
+          ...twj("p-8 text-sm flex flex-col gap-2"),
           fontFamily: "Computer Modern",
         }}
       >
-        <Text style={twj("text-3xl font-bold")}>{data.about.name}</Text>
+        <Text style={twj("text-3xl text-center font-bold")}>{data.about.name}</Text>
+        <View style={twj("flex flex-row gap-4 items-center justify-center -mt-2")}>
+          {data.about.email && (
+            <Link style={twj("text-black")} href={`mailto:${data.about.email}`}>
+              {data.about.email}
+            </Link>
+          )}
+          {data.about.linkedin && (
+            <Link style={twj("text-black")} href={`https://linkedin.com/in/${data.about.linkedin}`}>
+              {data.about.linkedin}
+            </Link>
+          )}
+          {data.about.github && (
+            <Link style={twj("text-black")} href={`https://github.com/${data.about.github}`}>
+              {data.about.github}
+            </Link>
+          )}
+        </View>
       </Page>
     </Document>
   );
