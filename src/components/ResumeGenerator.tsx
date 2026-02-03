@@ -37,12 +37,12 @@ export const ResumeDocument = ({ data }: { data: ResumeData }) => {
           )}
           {data.about.linkedin && (
             <Link style={twj("text-black")} href={`https://linkedin.com/in/${data.about.linkedin}`}>
-              {data.about.linkedin}
+              linkedin.com/in/{data.about.linkedin}
             </Link>
           )}
           {data.about.github && (
             <Link style={twj("text-black")} href={`https://github.com/${data.about.github}`}>
-              {data.about.github}
+              github.com/{data.about.github}
             </Link>
           )}
         </View>
