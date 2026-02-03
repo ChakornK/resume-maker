@@ -262,9 +262,14 @@ function FormInput({
           placeholder={placeholder}
           value={((data[sectionKey as keyof ResumeData] as never[])[index] || {})[fieldKey as never] || ""}
           onChange={(e) => {
+            console.log(data);
+            const targetField = data[sectionKey as keyof ResumeData] as Record<string, unknown>[];
+            if (targetField.length === 0) {
+              targetField.push({});
+            }
             setData((prev) => ({
               ...prev,
-              [sectionKey]: (prev[sectionKey as keyof ResumeData] as Record<string, unknown>[]).map((item, i) => {
+              [sectionKey]: targetField.map((item, i) => {
                 if (i === index) {
                   return {
                     ...item,
