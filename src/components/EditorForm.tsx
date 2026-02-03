@@ -88,6 +88,11 @@ const formTemplate: Record<string, FormTemplate> = {
         type: "text",
         placeholder: "Bachelor of Science",
       },
+      location: {
+        label: "Location",
+        type: "text",
+        placeholder: "Massachusetts, USA",
+      },
       startDate: {
         label: "Start date",
         type: "date",

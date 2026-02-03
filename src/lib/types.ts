@@ -15,6 +15,7 @@ export type ResumeData = {
   education: {
     institute: string;
     degree: string;
+    location: string;
     startDate: Date;
     endDate: Date;
   }[];

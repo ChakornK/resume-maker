@@ -46,6 +46,26 @@ export const ResumeDocument = ({ data }: { data: ResumeData }) => {
             </Link>
           )}
         </View>
+
+        <View style={twj("border-b w-full")}>
+          <Text style={twj("font-bold")}>Education</Text>
+        </View>
+        <View style={twj("pl-4 pr-2 flex flex-col gap-2")}>
+          {data.education.map((e) => (
+            <View key={e.degree + e.institute}>
+              <View style={twj("w-full flex flex-row justify-between")}>
+                <Text style={twj("font-bold")}>{e.institute || ""}</Text>
+                <Text style={twj("text-right")}>
+                  {e.startDate?.getFullYear() || "Unknown"} - {e.endDate?.getFullYear() || "Present"}
+                </Text>
+              </View>
+              <View style={twj("-mt-1 w-full flex flex-row justify-between")}>
+                <Text style={twj("italic")}>{e.degree || ""}</Text>
+                <Text style={twj("italic text-right")}>{e.location || ""}</Text>
+              </View>
+            </View>
+          ))}
+        </View>
       </Page>
     </Document>
   );
