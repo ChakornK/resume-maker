@@ -48,7 +48,7 @@ export const ResumeDocument = ({ data }: { data: ResumeData }) => {
         </View>
 
         <View style={twj("border-b w-full")}>
-          <Text style={twj("font-bold")}>Education</Text>
+          <Text style={twj("font-bold text-base")}>Education</Text>
         </View>
         <View style={twj("pl-4 pr-2 flex flex-col gap-2")}>
           {data.education.map((e) => (
